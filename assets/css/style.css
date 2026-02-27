@@ -2554,6 +2554,18 @@ textarea.form-input::-webkit-resizer {
   margin-bottom: 10px;
 }
 
+/* Strip the grey box from the popup's logo when it comes from an education card */
+.modal-container .modal-avatar-box {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.modal-container .modal-avatar-box img {
+  border-radius: 0;
+  object-fit: contain;
+}
+
 .education-list .testimonials-item-title {
   margin-left: 0;
 }
@@ -2855,4 +2867,88 @@ textarea.form-input::-webkit-resizer {
   .thesis-images {
     grid-template-columns: 1fr;
   }
+}
+
+/* Thesis narrative sections */
+.thesis-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.thesis-section-heading {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  color: var(--orange-yellow-crayola);
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.08);
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+}
+
+.thesis-section-text {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.75;
+}
+
+.thesis-section-text strong {
+  color: var(--white-2);
+  font-weight: var(--fw-500);
+}
+
+.thesis-section-text code {
+  background: hsla(0, 0%, 100%, 0.08);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  color: var(--orange-yellow-crayola);
+}
+
+/* Full-width figure (used in sections) */
+.thesis-fig-full {
+  width: 100%;
+}
+
+/* Smaller, centered figure (stereo & wht images) */
+.thesis-fig-centered {
+  width: 60%;
+  align-self: center;
+}
+
+@media (max-width: 580px) {
+  .thesis-fig-centered {
+    width: 90%;
+  }
+}
+
+/* Tools Used block */
+.thesis-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.thesis-tool-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.thesis-tool-pill {
+  background: hsla(0, 0%, 100%, 0.07);
+  border: 1px solid hsla(0, 0%, 100%, 0.12);
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-400);
+  padding: 6px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.3px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.thesis-tool-pill:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
 }

@@ -128,22 +128,22 @@
         <ul class="social-list">
 
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
+            <a href="https://www.linkedin.com/in/prathyush-sajith-b95160202/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
+            <a href="https://github.com/pratthhhhh" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
             </a>
           </li>
 
-          <li class="social-item">
+          <!-- <li class="social-item">
             <a href="#" class="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
-          </li>
+          </li> -->
 
         </ul>
 
@@ -229,7 +229,7 @@
 
 
         <!--
-          - service
+          - EDUCATION
         -->
 
         <section class="service">
@@ -244,7 +244,7 @@
                 <!-- Header row: logo left, title right -->
                 <div class="edu-head">
                   <figure class="edu-icon testimonials-avatar-box">
-                    <img src="./assets/images/icon-dev.svg" alt="UIC" width="60" data-testimonials-avatar>
+                    <img src="./assets/images/uic.png" alt="UIC" width="60" data-testimonials-avatar>
                   </figure>
 
                   <div class="edu-head-text">
@@ -291,7 +291,7 @@
                 <!-- Header row: logo left, title right -->
                 <div class="edu-head">
                   <figure class="edu-icon testimonials-avatar-box">
-                    <img src="./assets/images/icon-dev.svg" alt="SRM" width="60" data-testimonials-avatar>
+                    <img src="./assets/images/srm.png" alt="SRM" width="60" data-testimonials-avatar>
                   </figure>
 
                   <div class="edu-head-text">
@@ -415,40 +415,83 @@
                 target="_blank">Prof. Ahmet Enis Cetin</a></p>
           </div>
 
-          <!-- Description -->
-          <div class="thesis-description">
-            <p>
-              This thesis investigates improving the computational efficiency of stereo-based depth estimation by
-              replacing
-              standard convolutional layers with <strong>Walsh-Hadamard Transform (WHT)</strong> based convolutions. The
-              work
-              builds upon the <strong>Stereo Transformer (STTR)</strong> architecture, which uses attention-driven
-              correspondence
-              modeling along epipolar lines to predict long-range disparity for depth estimation.
-            </p>
-            <p>
-              By substituting Conv2D layers with WHTConv2D, we achieve a <strong>9% reduction in computational
-                complexity</strong>
-              while preserving representational capacity. Additionally, a <strong>Log-Disparity Loss
-                formulation</strong> is
-              introduced to improve supervision on far-range (&gt;100 m) depth regions, enhancing stability and accuracy
-              for
-              small-disparity predictions that traditional loss functions underweight.
-            </p>
-            <p>
-              <em>Tools used: PyTorch, TorchVision, OpenCV, CUDA, cuDNN, PIL, Matplotlib</em>
-            </p>
+          <!-- Tools Used -->
+          <div class="thesis-tools">
+            <h3 class="thesis-section-heading">Tools Used</h3>
+            <div class="thesis-tool-pills">
+              <span class="thesis-tool-pill">PyTorch</span>
+              <span class="thesis-tool-pill">TorchVision</span>
+              <span class="thesis-tool-pill">OpenCV</span>
+              <span class="thesis-tool-pill">CUDA</span>
+              <span class="thesis-tool-pill">cuDNN</span>
+              <span class="thesis-tool-pill">PIL</span>
+              <span class="thesis-tool-pill">Matplotlib</span>
+            </div>
           </div>
 
-          <!-- Sample images -->
-          <div class="thesis-images">
-            <figure class="thesis-fig">
+          <!-- Section 1: Stereo Camera & Stereo Depth -->
+          <div class="thesis-section">
+            <h3 class="thesis-section-heading">Stereo Camera &amp; Stereo Depth Estimation</h3>
+            <p class="thesis-section-text">
+              A <strong>stereo camera</strong> system consists of two horizontally offset lenses that mimic human
+              binocular vision. By capturing the same scene from two slightly different viewpoints, the system can
+              infer depth through <em>triangulation</em>, objects closer to the camera appear to shift more between
+              the two images (large disparity), while distant objects shift less (small disparity).
+            </p>
+            <p class="thesis-section-text">
+              <strong>Stereo depth estimation</strong> is the computational process of recovering a dense
+              depth map from such stereo image pairs. Modern deep learning approaches, such as the
+              <strong>Stereo Transformer (STTR)</strong> used in this work, model long-range correspondences
+              along epipolar lines using attention mechanisms, enabling accurate disparity prediction across
+              varying depth ranges — from nearby obstacles to objects over 100 m away.
+            </p>
+            <figure class="thesis-fig thesis-fig-centered">
               <img src="./assets/images/thesis-stereo.png" alt="Stereo Depth Estimation – Disparity Map" loading="lazy">
               <figcaption>Stereo camera pair and resulting disparity map visualization</figcaption>
             </figure>
-            <figure class="thesis-fig">
+          </div>
+
+          <!-- Section 2: WHT Implementation -->
+          <div class="thesis-section">
+            <h3 class="thesis-section-heading">What I Did — WHT Implementation</h3>
+            <p class="thesis-section-text">
+              Stereo Depth Estimation models are becoming more sophisticated and accurate, but they are also becoming
+              more computationally expensive.
+              These Models are being used in autonomous driving systems, mapping depth and semantin information in real
+              time, where computational efficiency is of utmost importance.
+              The core contribution of this thesis is to make these models more computationally efficient by
+              implementing Hadamard Transform based convolution.
+              In my implementation I replaced the standard <code>Conv2D</code> layers inside the STTR feature extractor
+              with a custom <strong>WHTConv2D</strong> layer built on the
+              <strong>Walsh-Hadamard Transform</strong>. The WHT decomposes feature maps using only
+              addition and subtraction operations (no multiplications), drastically reducing FLOPs while
+              retaining comparable representational power.
+            </p>
+            <p class="thesis-section-text">
+              Additionally, a <strong>Log-Disparity Loss</strong> formulation is introduced to improve
+              supervision on far-range (&gt;100 m) depth regions — depth ranges that traditional smooth-L1
+              losses underweight due to their small disparity magnitude. Together, these modifications achieve
+              a <strong>9% reduction in computational complexity</strong> with minimal accuracy trade-off.
+            </p>
+            <figure class="thesis-fig thesis-fig-centered">
               <img src="./assets/images/thesis-wht.png" alt="Walsh-Hadamard Transform Architecture" loading="lazy">
-              <figcaption>WHTConv2D replacing standard Conv2D layers in the pipeline</figcaption>
+              <figcaption>WHTConv2D replacing standard Conv2D layers in the STTR pipeline</figcaption>
+            </figure>
+          </div>
+
+          <!-- Section 3: My Implementation / Output -->
+          <div class="thesis-section">
+            <h3 class="thesis-section-heading">My Implementation — Results</h3>
+            <p class="thesis-section-text">
+              The modified STTR model was trained and evaluated on the <strong>StereoCARLA</strong>
+              dataset. The output disparity maps (shown below) demonstrate that the WHT-based model
+              preserves fine depth structure and boundary sharpness compared to the baseline, while running
+              at lower computational cost. The Log-Disparity Loss also shows measurable gains in far-range
+              depth accuracy on sparse LiDAR ground-truth regions.
+            </p>
+            <figure class="thesis-fig thesis-fig-full">
+              <img src="./assets/images/thesis-output.png" alt="Thesis Output – Disparity Results" loading="lazy">
+              <figcaption>Output disparity maps from the WHT-based STTR model vs. baseline</figcaption>
             </figure>
           </div>
 
@@ -478,7 +521,7 @@
               <div class="blog-post-link" data-testimonials-item>
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="PSMNet Depth Estimation" loading="lazy"
+                  <img src="./assets/images/proj-psmnet.png" alt="PSMNet Depth Estimation" loading="lazy"
                     data-testimonials-avatar>
                 </figure>
 
@@ -518,8 +561,8 @@
               <div class="blog-post-link" data-testimonials-item>
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Custom built GPT-Based Large Language Model" loading="lazy"
-                    data-testimonials-avatar>
+                  <img src="./assets/images/proj-llm.png" alt="Custom built GPT-Based Large Language Model"
+                    loading="lazy" data-testimonials-avatar>
                 </figure>
 
                 <div class="blog-content">
@@ -564,8 +607,8 @@
               <div class="blog-post-link" data-testimonials-item>
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="AI Perceptions Across Professionals" loading="lazy"
-                    data-testimonials-avatar>
+                  <img src="./assets/images/proj-ai-perceptions.png" alt="AI Perceptions Across Professionals"
+                    loading="lazy" data-testimonials-avatar>
                 </figure>
 
                 <div class="blog-content">
@@ -610,7 +653,7 @@
               <div class="blog-post-link" data-testimonials-item>
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg"
+                  <img src="./assets/images/proj-lane-detection.png"
                     alt="Lane Detection using UNet implemented as Discrete Wavelet Transform" loading="lazy"
                     data-testimonials-avatar>
                 </figure>
@@ -653,7 +696,7 @@
               <div class="blog-post-link" data-testimonials-item>
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg"
+                  <img src="./assets/images/proj-bot-detection.png"
                     alt="Analyzing Community-Aware Twitter Bot Detection using Semantic Learning " loading="lazy"
                     data-testimonials-avatar>
                 </figure>
@@ -699,7 +742,7 @@
               <div class="blog-post-link" data-testimonials-item>
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg"
+                  <img src="./assets/images/proj-drug-classification.png"
                     alt="Drug Classification and Repurposing using Decision Tree Algorithm and Data Analysis "
                     loading="lazy" data-testimonials-avatar>
                 </figure>
@@ -774,7 +817,7 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
+          <form action="https://formspree.io/f/mykdvjaq" method="POST" class="form" data-form>
 
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
