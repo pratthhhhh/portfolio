@@ -1553,6 +1553,164 @@ textarea.form-input::-webkit-resizer {
 
 
 /*-----------------------------------*\
+  #EDUCATION & RESUME
+\*-----------------------------------*/
+
+/* Force Education (service-list) items to stack vertically */
+.service-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Education dropdown (accordion) */
+.edu-details {
+  margin-top: 12px;
+}
+
+.edu-summary {
+  list-style: none;
+  /* removes default triangle in some browsers */
+  cursor: pointer;
+  user-select: none;
+
+  padding: 10px 12px;
+  border-radius: 12px;
+
+  /* Uses current theme colors; tweak if needed */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-weight: 500;
+}
+
+/* Remove default marker */
+.edu-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Add a custom arrow */
+.edu-summary::after {
+  content: "▾";
+  transition: transform 0.2s ease;
+}
+
+/* Rotate arrow when open */
+.edu-details[open] .edu-summary::after {
+  transform: rotate(180deg);
+}
+
+.edu-content {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.edu-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.edu-list li {
+  margin: 6px 0;
+}
+
+/* Education cards: use the existing testimonials modal behavior, but no floating avatar */
+.education-list .testimonials-avatar-box {
+  position: static;
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+  margin-bottom: 10px;
+}
+
+.education-list .testimonials-item-title {
+  margin-left: 0;
+}
+
+/* Education card header layout */
+.education-list .edu-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+/* Keep logo as-is (no floating/absolute positioning) */
+.education-list .edu-icon {
+  position: static;
+  transform: none;
+  margin: 0;
+}
+
+/* Title block */
+.education-list .edu-head-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Force education text to be readable on dark background */
+.education-list .edu-degree {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.education-list .edu-school {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Body text below header */
+.education-list .testimonials-text p {
+  color: rgba(255, 255, 255, 0.80);
+}
+
+/* Optional: if any links appear inside */
+.education-list a {
+  color: rgba(255, 255, 255, 0.90);
+}
+
+/**
+	 * RESUME & SKILLS
+	 */
+
+.timeline-text {
+  max-width: 700px;
+}
+
+/* about-skills responsive */
+.about-skills-list {
+  gap: 16px;
+}
+
+.about-skill-item {
+  padding: 12px 22px;
+  border-radius: 14px;
+  gap: 12px;
+}
+
+.about-skill-name {
+  font-size: var(--fs-5);
+}
+
+.about-skill-icon {
+  width: 42px;
+  height: 42px;
+}
+
+
+
+/*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/
 
@@ -2318,158 +2476,160 @@ textarea.form-input::-webkit-resizer {
     justify-content: center;
   }
 
-  /* Force Education (service-list) items to stack vertically */
-  .service-list {
-    display: flex;
-    flex-direction: column;
-  }
+}
 
-  /* Education dropdown (accordion) */
-  .edu-details {
-    margin-top: 12px;
-  }
+/* ------------------------------------- */
 
-  .edu-summary {
-    list-style: none;
-    /* removes default triangle in some browsers */
-    cursor: pointer;
-    user-select: none;
+/* Force Education (service-list) items to stack vertically */
+.service-list {
+  display: flex;
+  flex-direction: column;
+}
 
-    padding: 10px 12px;
-    border-radius: 12px;
+/* Education dropdown (accordion) */
+.edu-details {
+  margin-top: 12px;
+}
 
-    /* Uses current theme colors; tweak if needed */
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.06);
+.edu-summary {
+  list-style: none;
+  /* removes default triangle in some browsers */
+  cursor: pointer;
+  user-select: none;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 12px;
 
-    font-weight: 500;
-  }
+  /* Uses current theme colors; tweak if needed */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
 
-  /* Remove default marker */
-  .edu-summary::-webkit-details-marker {
-    display: none;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  /* Add a custom arrow */
-  .edu-summary::after {
-    content: "▾";
-    transition: transform 0.2s ease;
-  }
+  font-weight: 500;
+}
 
-  /* Rotate arrow when open */
-  .edu-details[open] .edu-summary::after {
-    transform: rotate(180deg);
-  }
+/* Remove default marker */
+.edu-summary::-webkit-details-marker {
+  display: none;
+}
 
-  .edu-content {
-    margin-top: 10px;
-    padding: 10px 12px;
-    border-radius: 12px;
+/* Add a custom arrow */
+.edu-summary::after {
+  content: "▾";
+  transition: transform 0.2s ease;
+}
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    background: rgba(255, 255, 255, 0.04);
-  }
+/* Rotate arrow when open */
+.edu-details[open] .edu-summary::after {
+  transform: rotate(180deg);
+}
 
-  .edu-list {
-    margin: 0;
-    padding-left: 18px;
-  }
+.edu-content {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
 
-  .edu-list li {
-    margin: 6px 0;
-  }
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+}
 
-  /* Education cards: use the existing testimonials modal behavior, but no floating avatar */
-  .education-list .testimonials-avatar-box {
-    position: static;
-    transform: none;
-    box-shadow: none;
-    background: transparent;
-    margin-bottom: 10px;
-  }
+.edu-list {
+  margin: 0;
+  padding-left: 18px;
+}
 
-  .education-list .testimonials-item-title {
-    margin-left: 0;
-  }
+.edu-list li {
+  margin: 6px 0;
+}
 
-  /* Education card header layout */
-  .education-list .edu-head {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 10px;
-  }
+/* Education cards: use the existing testimonials modal behavior, but no floating avatar */
+.education-list .testimonials-avatar-box {
+  position: static;
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+  margin-bottom: 10px;
+}
 
-  /* Keep logo as-is (no floating/absolute positioning) */
-  .education-list .edu-icon {
-    position: static;
-    transform: none;
-    margin: 0;
-  }
+.education-list .testimonials-item-title {
+  margin-left: 0;
+}
 
-  /* Title block */
-  .education-list .edu-head-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-  }
+/* Education card header layout */
+.education-list .edu-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
 
-  /* Force education text to be readable on dark background */
-  .education-list .edu-degree {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
+/* Keep logo as-is (no floating/absolute positioning) */
+.education-list .edu-icon {
+  position: static;
+  transform: none;
+  margin: 0;
+}
 
-  .education-list .edu-school {
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 0.92rem;
-    font-weight: 500;
-    margin-top: 4px;
-  }
+/* Title block */
+.education-list .edu-head-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
 
-  /* Body text below header */
-  .education-list .testimonials-text p {
-    color: rgba(255, 255, 255, 0.80);
-  }
+/* Force education text to be readable on dark background */
+.education-list .edu-degree {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
 
-  /* Optional: if any links appear inside */
-  .education-list a {
-    color: rgba(255, 255, 255, 0.90);
-  }
+.education-list .edu-school {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
 
-  /**
+/* Body text below header */
+.education-list .testimonials-text p {
+  color: rgba(255, 255, 255, 0.80);
+}
+
+/* Optional: if any links appear inside */
+.education-list a {
+  color: rgba(255, 255, 255, 0.90);
+}
+
+/**
 	 * RESUME
 	 */
 
-  .timeline-text {
-    max-width: 700px;
-  }
+.timeline-text {
+  max-width: 700px;
+}
 
-  /* about-skills responsive */
-  .about-skills-list {
-    gap: 16px;
-  }
+/* about-skills responsive */
+.about-skills-list {
+  gap: 16px;
+}
 
-  .about-skill-item {
-    padding: 12px 22px;
-    border-radius: 14px;
-    gap: 12px;
-  }
+.about-skill-item {
+  padding: 12px 22px;
+  border-radius: 14px;
+  gap: 12px;
+}
 
-  .about-skill-name {
-    font-size: var(--fs-5);
-  }
+.about-skill-name {
+  font-size: var(--fs-5);
+}
 
-  .about-skill-icon {
-    width: 42px;
-    height: 42px;
-  }
-
+.about-skill-icon {
+  width: 42px;
+  height: 42px;
 }
 
 /* Resume bullet list */
