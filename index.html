@@ -343,7 +343,8 @@
 
             <li class="about-skill-row">
               <span class="about-skill-category">Deep Learning:</span>
-              <span class="about-skill-values">PyTorch, TensorFlow &amp; Keras, Scikit-learn, NumPy, LangChain, RAG, Pandas,
+              <span class="about-skill-values">PyTorch, TensorFlow &amp; Keras, Scikit-learn, NumPy, LangChain, RAG,
+                Pandas,
                 Matplotlib, OpenCV</span>
             </li>
 
@@ -516,6 +517,60 @@
         <section class="blog-posts">
 
           <ul class="blog-posts-list">
+
+
+            <li class="blog-post-item">
+              <div class="blog-post-link" data-testimonials-item>
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/proj-rag.png" alt="History-Aware Local RAG System with LangChain and Ollama" loading="lazy"
+                    data-testimonials-avatar>
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">NLP / LLMs</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2025-08-23">Aug 2025</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title" data-testimonials-title>History-Aware Local RAG System with LangChain and Ollama</h3>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>Python - LangChain, Ollama, FAISS, HuggingFace Embeddings</p>
+                    <h5 class="modal-detail-heading">Project Description</h5>
+                    <p style="margin-bottom: 15px;">
+                      Built a fully local Retrieval-Augmented Generation (RAG) system that enables natural language
+                      querying over large document corpora — entirely offline, with no external API dependencies. The
+                      system ingests raw text files, constructs a semantic vector index, and answers user questions
+                      grounded in the source material using a locally hosted LLM. It also supports multi-turn
+                      conversations where follow-up questions are intelligently resolved using chat history.
+                    </p>
+                    <h5 class="modal-detail-heading">Pipeline</h5>
+                    <p style="margin-bottom: 15px;">
+                      Documents → TextLoader → Chunking → Embedding → FAISS Vector Store → MMR Retriever →
+                      Context + Question injection to the local LLM → Text Generation
+                    </p>
+                    <h5 class="modal-detail-heading">Problem It Solves</h5>
+                    <p style="margin-bottom: 15px;">
+                      Large Language Models hallucinate when asked about specific documents or private knowledge. RAG
+                      solves this by separating retrieval from generation - the model only answers from verified,
+                      retrieved context, making responses factually grounded and auditable.
+                    </p>
+                    <a href="https://github.com/pratthhhhh/RAG" target="_blank" class="form-btn"
+                      style="width: max-content; padding: 10px 20px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
+                      <ion-icon name="logo-github"></ion-icon> View on GitHub
+                    </a>
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
 
             <li class="blog-post-item">
               <div class="blog-post-link" data-testimonials-item>
