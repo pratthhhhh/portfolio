@@ -146,20 +146,94 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+function navigateToPage(pageName) {
+  for (let i = 0; i < pages.length; i++) {
+    if (pageName === pages[i].dataset.page) {
+      pages[i].classList.add("active");
+      navigationLinks[i].classList.add("active");
+      window.scrollTo(0, 0);
+    } else {
+      pages[i].classList.remove("active");
+      navigationLinks[i].classList.remove("active");
+    }
+  }
+}
+
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
+    const pageName = this.innerHTML.toLowerCase();
+    if (pageName === "resume") {
+      showResumeGate();
+    } else {
+      navigateToPage(pageName);
     }
-
   });
 }
+
+
+
+// resume email gate
+const resumeGateOverlay = document.getElementById("resumeGateOverlay");
+const resumeGateForm = document.getElementById("resumeGateForm");
+const resumeGateClose = document.getElementById("resumeGateClose");
+const resumeGateName = document.getElementById("resumeGateName");
+const resumeGateEmail = document.getElementById("resumeGateEmail");
+const resumeGateError = document.getElementById("resumeGateError");
+
+function showResumeGate() {
+  resumeGateName.value = "";
+  resumeGateEmail.value = "";
+  resumeGateError.textContent = "";
+  resumeGateOverlay.classList.add("active");
+  setTimeout(() => resumeGateName.focus(), 100);
+}
+
+function hideResumeGate() {
+  resumeGateOverlay.classList.remove("active");
+}
+
+resumeGateClose.addEventListener("click", hideResumeGate);
+
+resumeGateOverlay.addEventListener("click", function (e) {
+  if (e.target === resumeGateOverlay) hideResumeGate();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && resumeGateOverlay.classList.contains("active")) {
+    hideResumeGate();
+  }
+});
+
+resumeGateForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const name = resumeGateName.value.trim();
+  const email = resumeGateEmail.value.trim();
+
+  if (!name) {
+    resumeGateError.textContent = "Please enter your name.";
+    return;
+  }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    resumeGateError.textContent = "Please enter a valid email address.";
+    return;
+  }
+
+  resumeGateError.textContent = "";
+
+  try {
+    await fetch("https://formspree.io/f/mykdvjaq", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        _replyto: email,
+        _subject: "Resume Viewed by " + name + " (" + email + ")"
+      })
+    });
+  } catch (_) { /* fail silently, still show resume */ }
+
+  hideResumeGate();
+  navigateToPage("resume");
+});

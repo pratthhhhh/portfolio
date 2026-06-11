@@ -477,7 +477,7 @@
               Additionally, a <strong>Log-Disparity Loss</strong> formulation is introduced to improve
               supervision on far-range (&gt;100 m) depth regions — depth ranges that traditional smooth-L1
               losses underweight due to their small disparity magnitude. Together, these modifications achieve
-              a <strong>16.44% reduction in GFLOPs</strong> with minimal accuracy trade-off.
+              a <strong>18.33% reduction in non-attention GFLOPs</strong> with minimal accuracy trade-off.
             </p>
             <figure class="thesis-fig thesis-fig-centered">
               <img src="./assets/images/thesis-wht.png" alt="Walsh-Hadamard Transform Architecture" loading="lazy">
@@ -939,6 +939,31 @@
     </div>
 
   </main>
+
+  <!-- Resume Email Gate Modal -->
+  <div class="resume-gate-overlay" id="resumeGateOverlay">
+    <div class="resume-gate-modal">
+      <button class="resume-gate-close" id="resumeGateClose" aria-label="Close">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <div class="resume-gate-icon">
+        <ion-icon name="document-text-outline"></ion-icon>
+      </div>
+      <h3 class="resume-gate-title">View Resume</h3>
+      <p class="resume-gate-subtitle">Enter your email to access the resume</p>
+      <form id="resumeGateForm" class="resume-gate-form" novalidate>
+        <input type="text" id="resumeGateName" class="form-input resume-gate-input"
+          placeholder="Your name" autocomplete="name" required>
+        <input type="email" id="resumeGateEmail" class="form-input resume-gate-input"
+          placeholder="Your email address" autocomplete="email" required>
+        <p class="resume-gate-error" id="resumeGateError"></p>
+        <button type="submit" class="form-btn resume-gate-submit">
+          <ion-icon name="open-outline"></ion-icon>
+          <span>View Resume</span>
+        </button>
+      </form>
+    </div>
+  </div>
 
 
 

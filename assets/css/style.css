@@ -2694,6 +2694,111 @@ textarea.form-input::-webkit-resizer {
   font-style: normal;
 }
 
+/**
+ * RESUME EMAIL GATE
+ */
+
+.resume-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: hsla(240, 2%, 12%, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.resume-gate-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.resume-gate-modal {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  padding: 40px 36px 36px;
+  width: min(420px, 90vw);
+  text-align: center;
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.25s ease;
+  box-shadow: var(--shadow-2);
+}
+
+.resume-gate-overlay.active .resume-gate-modal {
+  transform: translateY(0) scale(1);
+}
+
+.resume-gate-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--light-gray);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.resume-gate-close:hover {
+  color: var(--white-2);
+}
+
+.resume-gate-icon {
+  font-size: 42px;
+  color: var(--orange-yellow-crayola);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.resume-gate-title {
+  color: var(--white-2);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  margin-bottom: 8px;
+}
+
+.resume-gate-subtitle {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  margin-bottom: 24px;
+}
+
+.resume-gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.resume-gate-input {
+  width: 100%;
+  text-align: center;
+}
+
+.resume-gate-error {
+  color: hsl(0, 65%, 60%);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-300);
+  min-height: 18px;
+  margin: -6px 0;
+}
+
+.resume-gate-submit {
+  width: 100%;
+  justify-content: center;
+  padding: 12px 24px;
+}
+
 /* Resume iframe embed */
 .resume-iframe-wrapper {
   position: relative;
