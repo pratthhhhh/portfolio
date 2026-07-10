@@ -451,7 +451,7 @@
               depth map from such stereo image pairs. Modern deep learning approaches, such as the
               <strong>Stereo Transformer (STTR)</strong> used in this work, model long-range correspondences
               along epipolar lines using attention mechanisms, enabling accurate disparity prediction across
-              varying depth ranges — from nearby obstacles to objects over 100 m away.
+              varying depth ranges, from nearby obstacles to objects over 100 m away.
             </p>
             <figure class="thesis-fig thesis-fig-centered">
               <img src="./assets/images/thesis-stereo.png" alt="Stereo Depth Estimation – Disparity Map" loading="lazy">
@@ -465,7 +465,7 @@
             <p class="thesis-section-text">
               Stereo Depth Estimation models are becoming more sophisticated and accurate, but they are also becoming
               more computationally expensive.
-              These Models are being used in autonomous driving systems, mapping depth and semantin information in real
+              These Models are being used in autonomous driving systems, mapping depth and semantic information in real
               time, where computational efficiency is of utmost importance.
               The core contribution of this thesis is to make these models more computationally efficient by
               implementing Hadamard Transform based convolution.
@@ -473,13 +473,13 @@
               with a custom <strong>WHTConv2D</strong> layer built on the
               <strong>Walsh-Hadamard Transform</strong>. The WHT decomposes feature maps using only
               addition and subtraction operations (no multiplications), drastically reducing FLOPs while
-              retaining comparable representational power.
+              retaining comparable representational power. Additionally, I introduced a self attention replacement using Walsh-Hadamard Transform <strong>(WHTMix)</strong> to reduce the computational cost of the attention mechanism in the STTR model.
             </p>
             <p class="thesis-section-text">
-              Additionally, a <strong>Log-Disparity Loss</strong> formulation is introduced to improve
-              supervision on far-range (&gt;100 m) depth regions — depth ranges that traditional smooth-L1
+              A <strong>Hybrid-Log-Disparity Loss</strong> formulation is introduced to improve
+              supervision on far-range (&gt;100 m) depth regions, depth ranges that traditional smooth-L1
               losses underweight due to their small disparity magnitude. Together, these modifications achieve
-              a <strong>18.33% reduction in non-attention GFLOPs</strong> with minimal accuracy trade-off.
+              a overall <strong>240% reduction in GFLOPs and a 275% reduction in latency</strong> with negligible accuracy trade-off.
             </p>
             <figure class="thesis-fig thesis-fig-centered">
               <img src="./assets/images/thesis-wht.png" alt="Walsh-Hadamard Transform Architecture" loading="lazy">
@@ -492,14 +492,13 @@
             <h3 class="thesis-section-heading">My Implementation — Results</h3>
             <p class="thesis-section-text">
               The modified STTR model was trained and evaluated on the <strong>StereoCARLA</strong>
-              dataset. The output disparity maps (shown below) demonstrate that the WHT-based model
-              preserves fine depth structure and boundary sharpness compared to the baseline, while running
-              at lower computational cost. The Log-Disparity Loss also shows measurable gains in far-range
+              dataset and fine-tuned on KITTI. The output disparity maps (shown below) demonstrates the negligible difference in accuracy from the WHT-based models, while running
+              at half the computational cost. The Hybrid-Log-Disparity Loss also shows measurable gains in far-range
               depth accuracy on sparse LiDAR ground-truth regions.
             </p>
             <figure class="thesis-fig thesis-fig-full">
               <img src="./assets/images/thesis-output.png" alt="Thesis Output – Disparity Results" loading="lazy">
-              <figcaption>Output disparity maps from the WHT-based STTR model vs. baseline</figcaption>
+              <figcaption>Output disparity maps from the WHT-based STTR models vs. the baseline</figcaption>
             </figure>
           </div>
 
